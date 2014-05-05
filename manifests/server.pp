@@ -40,12 +40,17 @@ class nfs::server (
   $nfs_v4_root_export_atboot    = false,
   $nfs_v4_root_export_options   = '_netdev',
   $nfs_v4_root_export_bindmount = undef,
-  $nfs_v4_root_export_tag       = undef
+  $nfs_v4_root_export_tag       = undef,
+  #
+  $mountd_port                   = undef,
+  $mountd_threads                = 1
 ) inherits nfs::params {
 
   class { "nfs::server::${::nfs::params::osfamily}":
     nfs_v4              => $nfs_v4,
     nfs_v4_idmap_domain => $nfs_v4_idmap_domain,
+    mountd_port         => $mountd_port,
+    mountd_threads      => $mountd_threads,
   }
 
   include nfs::server::configure
