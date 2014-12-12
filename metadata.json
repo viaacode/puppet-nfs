@@ -1,0 +1,14 @@
+{
+  "name": "echocat-nfs",
+  "version": "1.2.0",
+  "source": "git clone https://github.com/echocat/puppet-nfs.git",
+  "author": "echocat",
+  "license": "Apache 2.0",
+  "summary": "Installs and configures NFS server and clients",
+  "project_page": "https://github.com/echocat/puppet-nfs",
+  "issues_url": "https://github.com/echocat/puppet-nfs/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 3.2.0"},
+    {"name":"puppetlabs-concat","version_requirement":">= 1.0.0"}
+  ]
+}
