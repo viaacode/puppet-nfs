@@ -1,7 +1,7 @@
 puppet-module-nfs - for all your nfs needs - seriously.
 =======================
 
-[![Build Status](https://secure.travis-ci.org/echocat/puppet-module-nfs.png?branch=master)](https://travis-ci.org/echocat/puppet-module-nfs)
+[![Build Status](https://secure.travis-ci.org/echocat/puppet-nfs.png?branch=master)](https://travis-ci.org/echocat/puppet-nfs)
 
 Puppet module for setting up nfs server and clients.
 
