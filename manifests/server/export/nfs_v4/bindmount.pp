@@ -15,7 +15,7 @@ define nfs::server::export::nfs_v4::bindmount (
       atboot  => true,
       fstype  => 'none',
       options => $bind,
-      require => Nfs::Mkdir["${expdir}"],
+      require => Nfs::Mkdir[$expdir],
   }
 
 }

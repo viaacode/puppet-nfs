@@ -7,15 +7,15 @@ class nfs::client::redhat::service {
     require => Class['nfs::client::redhat::configure']
   }
 
-  service {"nfslock":
-    name => $::nfs::client::redhat::params::osmajor ? {
+  service {'nfslock':
+    ensure    => running,
+    name      => $::nfs::client::redhat::params::osmajor ? {
       7       => 'nfs-lock',
       default => 'nfslock'
     },
-    ensure     => running,
     enable    => true,
     hasstatus => true,
-    require => $::nfs::client::redhat::params::osmajor ? {
+    require   => $::nfs::client::redhat::params::osmajor ? {
       7 => Service['rpcbind'],
       6 => Service['rpcbind'],
       5 => [Package['portmap'], Package['nfs-utils']]
@@ -23,28 +23,28 @@ class nfs::client::redhat::service {
   }
 
   if $::nfs::client::redhat::params::osmajor == 5 or $::nfs::client::redhat::params::osmajor == 6 {
-    service { "netfs":
+    service { 'netfs':
       enable  => true,
       require => $::nfs::client::redhat::params::osmajor ? {
-        6 => Service["nfslock"],
-        5 => [Service["portmap"], Service["nfslock"]],
+        6 => Service['nfslock'],
+        5 => [Service['portmap'], Service['nfslock']],
       },
     }
   }
 
   if $::nfs::client::redhat::params::osmajor == 6 or $::nfs::client::redhat::params::osmajor == 7 {
-    service {"rpcbind":
+    service {'rpcbind':
       ensure    => running,
       enable    => true,
       hasstatus => true,
-      require   => [Package["rpcbind"], Package["nfs-utils"]],
+      require   => [Package['rpcbind'], Package['nfs-utils']],
     }
   } elsif $::nfs::client::redhat::params::osmajor == 5 {
-    service { "portmap":
+    service { 'portmap':
       ensure    => running,
       enable    => true,
       hasstatus => true,
-      require   => [Package["portmap"], Package["nfs-utils"]],
+      require   => [Package['portmap'], Package['nfs-utils']],
     }
   }
 }

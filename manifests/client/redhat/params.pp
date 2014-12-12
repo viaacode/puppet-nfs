@@ -3,20 +3,20 @@
 
 class nfs::client::redhat::params {
 
-	case $::operatingsystemrelease {
-		/^5\.\d+/: {
-		  $osmajor = 5
-		}
-		/^6\.\d+$/: {
-		  $osmajor = 6
-		}
-		/^7\.\d+/: {
-		  $osmajor = 7
-		}
-		default:{
-		  fail("Operatingsystemrelease ${::operatingsystemrelease} not supported")
-		}
-	}
+  case $::operatingsystemrelease {
+    /^5\.\d+/: {
+      $osmajor = 5
+    }
+    /^6\.\d+$/: {
+      $osmajor = 6
+    }
+    /^7\.\d+/: {
+      $osmajor = 7
+    }
+    default:{
+      fail("Operatingsystemrelease ${::operatingsystemrelease} not supported")
+    }
+  }
 }
 
 

@@ -51,14 +51,14 @@ define nfs::server::export (
     }
 
     @@nfs::client::mount {"shared ${v3_export_name} by ${::clientcert}":
-      ensure          => $ensure,
-      mount           => $mount,
-      remounts        => $remounts,
-      atboot          => $atboot,
-      options         => $options,
-      nfstag          => $nfstag,
-      share           => $v3_export_name,
-      server          => $::clientcert,
+      ensure   => $ensure,
+      mount    => $mount,
+      remounts => $remounts,
+      atboot   => $atboot,
+      options  => $options,
+      nfstag   => $nfstag,
+      share    => $v3_export_name,
+      server   => $::clientcert,
     }
   }
 }
