@@ -5,7 +5,7 @@ define nfs::client::mount::nfs_v4::bindmount (
 
   nfs::mkdir{ $mount_name: }
 
-  ::mount {
+  mount {
     $mount_name:
       ensure  => $ensure,
       device  => $name,

@@ -29,7 +29,7 @@ define nfs::client::mount::nfs_v4::root (
 
   nfs::mkdir{ $_nfs4_mount: }
 
-  ::mount {"shared root by ${::clientcert} on ${_nfs4_mount}":
+  mount {"shared root by ${::clientcert} on ${_nfs4_mount}":
     ensure   => $ensure,
     device   => "${server}:/",
     fstype   => 'nfs4',
