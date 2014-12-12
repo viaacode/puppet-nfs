@@ -1,8 +1,9 @@
 class nfs::client::debian::service {
   Service {
-    require => Class['nfs::client::debian::configure'] }
+    require => Class['nfs::client::debian::configure']
+  }
 
-  service { "rpcbind":
+  service { 'rpcbind':
     ensure    => running,
     enable    => true,
     hasstatus => false,

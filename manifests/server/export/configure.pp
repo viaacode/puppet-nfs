@@ -1,15 +1,15 @@
 define nfs::server::export::configure (
-  $ensure = 'present',
-  $clients
+  $clients,
+  $ensure = 'present'
 ) {
 
   if $ensure != 'absent' {
     $line = "${name} ${clients}\n"
 
     concat::fragment{
-      "${name}":
+      $name:
         target  => '/etc/exports',
-        content => "${line}"
+        content => $line
     }
   }
 }

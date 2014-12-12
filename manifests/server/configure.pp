@@ -1,8 +1,8 @@
 class nfs::server::configure {
 
   concat {'/etc/exports':
+    ensure  => present,
     require => Class["nfs::server::${nfs::server::osfamily}"],
-    ensure => present,
   }
 
 

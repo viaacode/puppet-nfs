@@ -3,13 +3,20 @@
 
 class nfs::client::redhat::params {
 
-  if versioncmp($::operatingsystemrelease, "7.0") > 0 {
-    $osmajor = 7
-  } elsif versioncmp($::operatingsystemrelease, "6.0") > 0 {
-    $osmajor = 6
-  } elsif versioncmp($::operatingsystemrelease, "5.0") > 0 {
-    $osmajor = 5
-  }
+	case $::operatingsystemrelease {
+		/^5\.\d+/: {
+		  $osmajor = 5
+		}
+		/^6\.\d+$/: {
+		  $osmajor = 6
+		}
+		/^7\.\d+/: {
+		  $osmajor = 7
+		}
+		default:{
+		  fail("Operatingsystemrelease ${::operatingsystemrelease} not supported")
+		}
+	}
 }
 
 
