@@ -1,6 +1,6 @@
 require 'spec_helper'
 describe 'nfs::server::redhat' do
-  let(:facts) { {:osmajor => 6 } }
+  let(:facts) { {:operatingsystemrelease => 6.4 } }
 
   it do
     should contain_class('nfs::client::redhat')

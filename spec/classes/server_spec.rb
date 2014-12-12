@@ -22,15 +22,15 @@ describe 'nfs::server' do
     it { should contain_class('nfs::server::debian') }
   end
   context "operatingsysten => scientific" do
-    let(:facts) { {:operatingsystem => 'scientific', :concat_basedir => '/tmp', :osmajor => 6, } }
+    let(:facts) { {:operatingsystem => 'scientific', :concat_basedir => '/tmp', :operatingsystemrelease => 6.4 } }
     it { should contain_class('nfs::server::redhat') }
   end
   context "operatingsysten => centos v6" do
-    let(:facts) { {:operatingsystem => 'centos', :concat_basedir => '/tmp', :osmajor => 6, } }
+    let(:facts) { {:operatingsystem => 'centos', :concat_basedir => '/tmp', :operatingsystemrelease => 6.4 } }
     it { should contain_class('nfs::server::redhat') }
   end
   context "operatingsysten => redhat v6" do
-    let(:facts) { {:operatingsystem => 'redhat', :concat_basedir => '/tmp', :osmajor => 6, } }
+    let(:facts) { {:operatingsystem => 'redhat', :concat_basedir => '/tmp', :operatingsystemrelease => 6.4 } }
     it { should contain_class('nfs::server::redhat') }
   end
   context "operatingsysten => gentoo" do

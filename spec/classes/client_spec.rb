@@ -10,23 +10,27 @@ describe 'nfs::client' do
     it { should contain_class('nfs::client::debian') }
   end
   context "operatingsysten => scientific" do
-    let(:facts) { {:operatingsystem => 'scientific', :osmajor => 6 } }
+    let(:facts) { {:operatingsystem => 'scientific', :operatingsystemrelease => 6.4 } }
     it { should contain_class('nfs::client::redhat') }
   end
   context "operatingsysten => centos v7" do
-    let(:facts) { {:operatingsystem => 'centos', :osmajor => 7 } }
+    let(:facts) { {:operatingsystem => 'centos', :operatingsystemrelease => 7.0 } }
     it { should contain_class('nfs::client::redhat') }
   end
   context "operatingsysten => centos v6" do
-    let(:facts) { {:operatingsystem => 'centos', :osmajor => 6 } }
+    let(:facts) { {:operatingsystem => 'centos', :operatingsystemrelease => 6.4 } }
+    it { should contain_class('nfs::client::redhat') }
+  end
+  context "operatingsysten => centos v5" do
+    let(:facts) { {:operatingsystem => 'centos', :operatingsystemrelease => 5.4 } }
     it { should contain_class('nfs::client::redhat') }
   end
   context "operatingsysten => redhat v7" do
-    let(:facts) { {:operatingsystem => 'redhat', :osmajor => 7 } }
+    let(:facts) { {:operatingsystem => 'redhat', :operatingsystemrelease => 7.0 } }
     it { should contain_class('nfs::client::redhat') }
   end
   context "operatingsysten => redhat v6" do
-    let(:facts) { {:operatingsystem => 'redhat', :osmajor => 6 } }
+    let(:facts) { {:operatingsystem => 'redhat', :operatingsystemrelease => 6.4 } }
     it { should contain_class('nfs::client::redhat') }
   end
   context "operatingsysten => gentoo" do
