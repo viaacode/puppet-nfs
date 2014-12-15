@@ -38,7 +38,7 @@
 #
 
 class nfs::server (
-  $nfs_v4                       = $nfs::params::nfs_v4,
+  $nfs_v4 = $nfs::params::nfs_v4,
   $nfs_v4_export_root           = $nfs::params::nfs_v4_export_root,
   $nfs_v4_export_root_clients   = $nfs::params::nfs_v4_export_root_clients,
   $nfs_v4_idmap_domain          = $nfs::params::nfs_v4_idmap_domain,
@@ -52,10 +52,11 @@ class nfs::server (
   $nfs_v4_root_export_tag       = undef
 ) inherits nfs::params {
 
-  class{ "nfs::server::${::nfs::params::osfamily}":
+  class { "nfs::server::${::nfs::params::osfamily}":
     nfs_v4              => $nfs_v4,
     nfs_v4_idmap_domain => $nfs_v4_idmap_domain,
   }
 
-  include  nfs::server::configure
+  include nfs::server::configure
+
 }
