@@ -1,25 +1,28 @@
-puppet-module-nfs - for all your nfs needs - seriously.
-=======================
+#nfs
 
-[![Build Status](https://secure.travis-ci.org/echocat/puppet-nfs.png?branch=master)](https://travis-ci.org/echocat/puppet-nfs)
+####Table of Contents
 
-Puppet module for setting up nfs server and clients.
+1. [Overview - What is the nfs module?](#overview)
+2. [Module Description - What does this module do?](#module-description)
+3. [Setup - The basics of getting started with nfs](#setup)
+4. [Usage - The class and available configurations](#usage)
+5. [Requirements](#requirements)
+6. [Limitations - OS compatibility, etc.](#limitations)
+7. [Contributing to the graphite module](#contributing)
 
-Storeconfigs is used for propogating export configs
-to clients.
+##Overview
 
-Optional nfs4-support.
+This module installs, configures and manages everything on NFS clients and servers.
 
-Dependencies
-----------------------
+Github Master: [![Build Status](https://secure.travis-ci.org/echocat/puppet-nfs.png?branch=master)](https://travis-ci.org/echocat/puppet-nfs)
 
-Puppetmaster must be configured to use storeconfigs.
-Clients need to support augeas.
+##Module Description
 
-Check Modulesfile for module dependencies
+This module can be used to simply mount nfs shares on a client or to configure your nfs servers.
+It makes use of storeconfigs on the puppetmaster to get its resources. 
 
-I have tested the module on lucid, precise, centos5 and centos6.
-Chances are good it will work on rhel and sles aswell.
+##Setup
+
 
 Examples
 ----------------------
@@ -239,18 +242,22 @@ This will export /data/folder on the server and automagically mount it on client
 
 </pre>
 
-Author
------------------
-Harald Skoglund <haraldsk@redpill-linpro.com>
+##Requirements
 
-Webpage
------------------
-https://github.com/haraldsk/puppet-module-nfs/
+###Modules needed:
 
-Copyright 
-----------------
-Redpill Linpro - www.redpill-linpro.com
+stdlib by puppetlabs
+concat by puppetlabs
 
-License
-----------------
-Apache License, Version 2.0
+###Software versions needed:
+
+facter > 1.6.2
+puppet > 2.6.2
+
+##Limitations
+
+##Contributing
+
+Echocat modules are open projects. So if you want to make this module even better, you can contribute to this module on [Github](https://github.com/echocat/puppet-graphite).
+
+This module forked/based on Harald Skoglund <haraldsk@redpill-linpro.com> from https://github.com/haraldsk/puppet-module-nfs/
