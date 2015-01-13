@@ -27,15 +27,6 @@
 #    nfs_v4_export_root  => "/export",
 #    nfs_v4_idmap_domain => $::domain,
 #  }
-#
-# === Authors
-#
-# Harald Skoglund <haraldsk@redpill-linpro.com>
-#
-# === Copyright
-#
-# Copyright 2012 Redpill Linpro, unless otherwise noted.
-#
 
 class nfs::server (
   $nfs_v4 = $nfs::params::nfs_v4,
