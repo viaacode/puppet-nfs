@@ -13,6 +13,10 @@ class nfs::client::redhat::params {
     /^7\.\d+/: {
       $osmajor = 7
     }
+    # TODO: workaround for Fedora
+    /^\d{2,}/: {
+      $osmajor = 7
+    }
     default:{
       fail("Operatingsystemrelease ${::operatingsystemrelease} not supported")
     }
