@@ -7,7 +7,10 @@ define nfs::client::mount (
   $atboot    = false,
   $options   = '_netdev',
   $bindmount = undef,
-  $nfstag    = undef
+  $nfstag    = undef,
+  $owner     = 'root',
+  $group     = 'root',
+  $perm      = '0777',
 ) {
 
   include ::nfs::client
@@ -50,7 +53,11 @@ define nfs::client::mount (
       $_mount = $mount
     }
 
-    nfs::mkdir{ $_mount: }
+    nfs::mkdir{ $_mount:
+      owner => $owner,
+      group => $group,
+      perm  => $perm,
+    }
 
     mount {"shared ${share} by ${::clientcert}":
       ensure   => $ensure,

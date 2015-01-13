@@ -1,5 +1,9 @@
 # Nasty ass hax to allow several levels of directories
-define nfs::mkdir () {
+define nfs::mkdir (
+  $owner = 'root',
+  $group = 'root',
+  $perm  = '0777'
+) {
   exec { "mkdir_recurse_${name}":
     path    => ['/bin', '/usr/bin'],
     command => "mkdir -p ${name}",
@@ -9,7 +13,9 @@ define nfs::mkdir () {
   file { $name:
     ensure  => directory,
     require => Exec["mkdir_recurse_${name}"],
-    mode    => '0777',
+    mode    => $perm,
+    owner   => $owner,
+    group   => $group,
   }
 
 }
