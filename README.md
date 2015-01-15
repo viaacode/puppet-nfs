@@ -42,13 +42,13 @@ It can make use of storeconfigs on the puppetmaster to get its resources.
 This example mounts a nfs share on the client, with NFSv3
 
 ```puppet
-  include '::nfs::client'
+include '::nfs::client'
 
-  ::nfs::client::mount { '/mnt/mymountpoint':
-    server  => 'nfsserver.my.domain',
-    share   => '/share/on/server',
-    options => 'rw',
-  }
+::nfs::client::mount { '/mnt/mymountpoint':
+  server  => 'nfsserver.my.domain',
+  share   => '/share/on/server',
+  options => 'rw',
+}
 ```
 
 ###NFSv3 server and client
@@ -57,21 +57,25 @@ This will export /data/folder on the server and automagically mount it on client
 You need storeconfigs/puppetdb for this to work.
   
 ```puppet
-  node server {
-    include nfs::server
-    nfs::server::export{ '/data_folder':
-      ensure  => 'mounted',
-      clients => '10.0.0.0/24(rw,insecure,async,no_root_squash) localhost(rw)'
-  }
+node server {
+  include nfs::server
 
-  # By default, mounts are mounted in the same folder on the clients as
-  # they were exported from on the server
-  node client {
-    include nfs::client
-    Nfs::Client::Mount <<| |>> 
+  ::nfs::server::export{ '/data_folder':
+    ensure  => 'mounted',
+    clients => '10.0.0.0/24(rw,insecure,async,no_root_squash) localhost(rw)'
   }
+}
 ```
 
+By default, mounts are mounted in the same folder on the clients as
+they were exported from on the server.
+
+```puppet
+node client {
+  include '::nfs::client'
+  Nfs::Client::Mount <<| |>> 
+}
+```
 
 ###NFSv3 multiple exports, servers and multiple node
 
@@ -170,14 +174,14 @@ By default, mounts are mounted in the same folder on the clients as
 they were exported from on the server
 
 ```puppet
-  node client {
-    class { 'nfs::server':
-      nfs_v4 = true,
-      nfs_v4_export_root_clients =>
-        '10.0.0.0/24(rw,fsid=root,insecure,no_subtree_check,async,no_root_squash)'
-    }
-    Nfs::Client::Mount <<| |>>; 
+node client {
+  class { 'nfs::server':
+    nfs_v4 = true,
+    nfs_v4_export_root_clients =>
+      '10.0.0.0/24(rw,fsid=root,insecure,no_subtree_check,async,no_root_squash)'
   }
+  Nfs::Client::Mount <<| |>>; 
+}
 ```
 
 We can also mount the NFSv4 Root directly through nfs::client::mount::nfsv4::root.
@@ -185,15 +189,16 @@ By default /srv will be used for as mount point, but can be overriden through
 the 'mounted' option.
 
 ```puppet
-  node client2 {
-    $server = 'server'
-    class { 'nfs::server':
-      nfs_v4 = true,
-    }
-    Nfs::Client::Mount::Nfs_v4::Root <<| server == $server |>> { 
-      mount => "/srv/$server",
-    }
+node client2 {
+  $server = 'server'
+
+  class { '::nfs::server':
+    nfs_v4 = true,
   }
+  Nfs::Client::Mount::Nfs_v4::Root <<| server == $server |>> { 
+    mount => "/srv/$server",
+  }
+}
 ```
 
 ###NFSv4 insanely overcomplicated reference
@@ -274,16 +279,16 @@ Set up NFS server and exports. NFSv3 and NFSv4 supported.
 
 **Parameters within `nfs::server`:**
 
-#####`nfs_v4`
+#####`nfs_v4` (optional)
 
 NFSv4 support. Will set up automatic bind mounts to export root.
 Disabled by default.
 
-#####`nfs_v4_export_root`
+#####`nfs_v4_export_root` (optional)
 
 Export root, where we bind mount shares, default /export
 
-#####`nfs_v4_idmap_domain`
+#####`nfs_v4_idmap_domain` (optional)
 
 Domain setting for idmapd, must be the same across server
 and clients. Default is to use $domain fact.
@@ -291,12 +296,12 @@ and clients. Default is to use $domain fact.
 #####Examples
 
 ```puppet
-class { nfs::server:
+class { '::nfs::server':
   nfs_v4                      => true,
-  nfs_v4_export_root_clients => "*.${::domain}(ro,fsid=root,insecure,no_subtree_check,async,root_squash)",
+  nfs_v4_export_root_clients  => "*.${::domain}(ro,fsid=root,insecure,no_subtree_check,async,root_squash)",
   # Generally parameters below have sane defaults.
-  nfs_v4_export_root  => "/export",
-  nfs_v4_idmap_domain => $::domain,
+  nfs_v4_export_root          => "/export",
+  nfs_v4_idmap_domain         => $::domain,
 }
 ```
 
@@ -358,8 +363,8 @@ Default is 'localhost(ro)'. Copied directly into /etc/exports as a string, for s
 #####Example
 
 ```puppet
-::nfs::server::export{ '/media_library':
-  nfstag     => 'media'
+::nfs::server::export { '/media_library':
+  nfstag  => 'media'
   clients => '10.0.0.0/24(rw,insecure,async,no_root_squash) localhost(rw)'
 }
 ```
@@ -387,10 +392,10 @@ and clients. Default is to use $::domain fact.
 #####Example
 
 ```puppet
-class { 'nfs::client':
+class { '::nfs::client':
   nfs_v4              => true,
   # Generally parameters below have sane defaults.
-  nfs_v4_mount_root  => "/srv",
+  nfs_v4_mount_root   => '/srv',
   nfs_v4_idmap_domain => $::domain,
 }
 ```
