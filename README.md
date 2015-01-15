@@ -14,7 +14,7 @@
     * [Class: nfs::server](#class-nfsserver)
     * [Defined Type: nfs::server::export](#defined-type-nfsserverexport)
     * [Class: nfs::client](#class-nfsclient)
-    * [Defined Type: nfs::client::mount](#defined-type-nfsservermount)
+    * [Defined Type: nfs::client::mount](#defined-type-nfsclientmount)
 5. [Requirements](#requirements)
 6. [Limitations - OS compatibility, etc.](#limitations)
 7. [Contributing to the graphite module](#contributing)
@@ -401,10 +401,54 @@ Set up NFS mount on client.
 
 **Parameters within `nfs::client::mount`:**
 
+#####`server`
 
-#TODO: write it down
+FQDN or IP of the NFS server.
 
+#####`share`
 
+Name of share to be mounted.
+
+#####`ensure` (optional)
+
+Default is 'mounted'.
+
+#####`mount` (optional)
+
+Default is `$title` of defined type. Defines mountpoint of the share on the client.
+
+#####`remounts` (optional)
+
+Default is false.
+
+#####`atboot` (optional)
+
+Default is false.
+
+#####`options` (optional)
+
+Default is '_netdev'. Don't remove that option, but feel free to add more.
+
+#####`bindmount` (optional)
+
+Default is undef. If set will mount share inside /srv (or overridden mount_root)
+and then bindmount to another directory elsewhere in the fs - for fanatics.
+
+#####`nfstag` (optional)
+
+Default is undef. Used to identify a catalog item for filtering by storeconfigs on clients.
+
+#####`owner` (optional)
+
+Default is 'root'. Sets owner of local mountpoint.
+
+#####`group` (optional)
+
+Default is `root`. Sets goup ownership of mountpoint.
+
+#####`perm` (optional)
+
+Default is '0777'. Set mode of mountpoint.
 
 ##Requirements
 
