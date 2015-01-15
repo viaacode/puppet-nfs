@@ -452,6 +452,8 @@ Default is '0777'. Set mode of mountpoint.
 
 ##Requirements
 
+If you want to have the full potential of this module its recommend to have storeconfigs enabled.
+
 ###Modules needed:
 
 * stdlib by puppetlabs
