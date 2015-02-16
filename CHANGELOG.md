@@ -1,3 +1,9 @@
+## 2015-02-16 - 1.2.1 (Bugfix release)
+
+#### Bugfixes:
+
+- ensure install dependencies for mount
+
 ## 2015-01-15 - 1.2.0 (Feature/Bugfix release)
 
 #### Features:
