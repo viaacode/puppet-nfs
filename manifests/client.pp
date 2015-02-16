@@ -34,6 +34,13 @@ class nfs::client (
   $nfs_v4_idmap_domain = $::nfs::params::nfs_v4_idmap_domain
 ) inherits nfs::params {
 
+  # ensure dependencies for mount
+
+  Class["::nfs::client::${::nfs::params::osfamily}::install"] ->
+  Class["::nfs::client::${::nfs::params::osfamily}::configure"] ->
+  Class["::nfs::client::${::nfs::params::osfamily}::service"] ->
+  Class['::nfs::client']
+
   class{ "nfs::client::${::nfs::params::osfamily}":
     nfs_v4              => $nfs_v4,
     nfs_v4_idmap_domain => $nfs_v4_idmap_domain,
