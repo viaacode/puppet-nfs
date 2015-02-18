@@ -63,7 +63,7 @@ define nfs::client::mount (
       perm  => $perm,
     }
 
-    mount {"shared ${server}:${share} by ${::clientcert}":
+    mount {"shared ${server}:${share} by ${::clientcert} ${_mount}":
       ensure   => $ensure,
       device   => "${server}:${share}",
       fstype   => 'nfs',
