@@ -1,3 +1,10 @@
+## 2015-03-05 - 1.3.0 (Feature release)
+
+#### Features:
+
+- Allow mounting shares with the same name from different servers
+- Add Scientific Linux CERN support
+
 ## 2015-02-16 - 1.2.1 (Bugfix release)
 
 #### Bugfixes:
