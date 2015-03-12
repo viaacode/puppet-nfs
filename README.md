@@ -10,6 +10,7 @@
     * [NFSv3 multiple exports, servers and multiple node] (#nfsv3-multiple-exports-servers-and-multiple-node)
     * [NFSv4 Simple example] (#nfsv4-simple-example)
     * [NFSv4 insanely overcomplicated reference] (#nfsv4-insanely-overcomplicated-reference)
+    * [A large number of clients] (#a-large-number-of-clients)
 4. [Usage - The classes and defined types available for configuration](#usage)
     * [Class: nfs::server](#class-nfsserver)
     * [Defined Type: nfs::server::export](#defined-type-nfsserverexport)
@@ -203,7 +204,7 @@ node client2 {
 
 ###NFSv4 insanely overcomplicated reference
 
-Just to show you, how coplex we can make things ;-)
+Just to show you, how complex we can make things ;-)
 
 ```puppet
   # and on individual nodes.
@@ -270,6 +271,46 @@ Just to show you, how coplex we can make things ;-)
     }
   }
 ```
+
+#### A large number of clients
+If a server has many clients it's a bit of a mess to put them all in a single 'clients' option for `nfs::server::export`. Instead, you can put them in a array or hash and use the `mk_client_list` function to generate the clients string.
+
+```
+$nfs_clients = [
+    'common-*.loc.dom', 
+    'hostb.loc.dom', 
+    '10.0.9.0/24']
+
+nfs::server::export { '/data':
+    clients => mk_client_list($nfs_clients, {}, "ro"),
+    # Which will produce:
+    # 'common-*.loc.dom(ro) hostb.loc.dom(ro) 10.0.9.0/24(ro)'
+    ...
+}
+```
+
+In this case mk_client_list generates the string: `
+
+The second option is a hash of client -> options. The third option is the default in case a client doesn't have options specified in the hash. In the above example none of the clients had specific settings, so they were all given the default options of `ro`.
+```
+$nfs_clients = [
+    'common-*.loc.dom', 
+    'hostb.loc.dom', 
+    '10.0.9.0/24']
+
+$nfs_client_options = {
+    'hostb.loc.dom'     => 'rw,no_root_squash'}
+
+nfs::server::export {'/data':
+    # Use the stdlib keys function to get the array of keys from our hash.
+    clients => mk_client_list($nfs_clients, $nfs_client_options, 'ro'),
+    # Which will produce:
+    # 'common-*.loc.dom(ro) hostb.loc.dom(rw,no_root_squash) 10.0.9.0/24(ro)'
+    ...
+}
+```
+
+You can also give options to each host in a hash, and then use the stdlib keys() function to extract the client array from the hash: `mk_client_list(keys($client_hash), $client_hash, '')`
 
 ##Usage
 
