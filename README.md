@@ -10,7 +10,7 @@
     * [NFSv3 multiple exports, servers and multiple node] (#nfsv3-multiple-exports-servers-and-multiple-node)
     * [NFSv4 Simple example] (#nfsv4-simple-example)
     * [NFSv4 insanely overcomplicated reference] (#nfsv4-insanely-overcomplicated-reference)
-    * [A large number of clients] (#many-clients)
+    * [A large number of clients] (#a-large-number-of-clients)
 4. [Usage - The classes and defined types available for configuration](#usage)
     * [Class: nfs::server](#class-nfsserver)
     * [Defined Type: nfs::server::export](#defined-type-nfsserverexport)
