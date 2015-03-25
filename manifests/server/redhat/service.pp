@@ -1,7 +1,12 @@
 class nfs::server::redhat::service {
+  if $operatingsystemmajrelease >= 7 {
+    $service_name = "nfs-server"
+  } else {
+    $service_name = "nfs"
+  }
 
   if $nfs::server::redhat::nfs_v4 == true {
-    service {'nfs':
+    service {$service_name:
       ensure     => running,
       enable     => true,
       hasrestart => true,
@@ -10,7 +15,7 @@ class nfs::server::redhat::service {
       subscribe  => [ Concat['/etc/exports'], Augeas['/etc/idmapd.conf'] ],
     }
   } else {
-    service {'nfs':
+    service {$service_name:
       ensure     => running,
       enable     => true,
       hasrestart => true,
