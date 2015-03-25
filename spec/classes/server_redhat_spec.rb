@@ -4,7 +4,7 @@ describe 'nfs::server::redhat' do
 
   it do
     should contain_class('nfs::client::redhat')
-    should contain_service('nfs').with( 'ensure' => 'running'  )
+    should contain_service('nfs-server').with( 'ensure' => 'running'  )
   end
   context ":nfs_v4 => true" do
     let(:params) {{ :nfs_v4 => true , :nfs_v4_idmap_domain => 'teststring' }}
