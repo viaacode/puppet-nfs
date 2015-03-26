@@ -1,8 +1,8 @@
 class nfs::server::redhat::service {
-  if $operatingsystemmajrelease >= 7 {
-    $service_name = "nfs-server"
+  if $::nfs::client::redhat::params::osmajor >= 7 {
+    $service_name = 'nfs-server'
   } else {
-    $service_name = "nfs"
+    $service_name = 'nfs'
   }
 
   if $nfs::server::redhat::nfs_v4 == true {
