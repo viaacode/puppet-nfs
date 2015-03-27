@@ -50,9 +50,15 @@ define nfs::server::export (
         clients => $clients,
     }
 
+    if $mount == undef {
+      $_mount = $v3_export_name
+    } else {
+      $_mount = $mount
+    }
+
     @@nfs::client::mount {"shared ${v3_export_name} by ${::clientcert}":
       ensure   => $ensure,
-      mount    => $mount,
+      mount    => $_mount,
       remounts => $remounts,
       atboot   => $atboot,
       options  => $options,
