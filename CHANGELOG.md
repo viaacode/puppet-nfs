@@ -1,3 +1,14 @@
+## 2015-03-20 - 1.3.1 (Feature/Bugfixe release)
+
+#### Features:
+
+- #11 Add function to easy handle large numer of clients (see README "A large number of clients")
+
+#### Bugfixes:
+
+- #13 RHEL 7: handle service enable correct
+- #12 RHEL 7: ensure client mount works correct with undef mounts
+
 ## 2015-03-05 - 1.3.0 (Feature release)
 
 #### Features:
