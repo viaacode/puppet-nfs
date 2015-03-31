@@ -2,7 +2,7 @@
 define nfs::mkdir (
   $owner = 'root',
   $group = 'root',
-  $perm  = '0777'
+  $perm  = '0755'
 ) {
   exec { "mkdir_recurse_${name}":
     path    => ['/bin', '/usr/bin'],
