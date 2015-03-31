@@ -486,15 +486,18 @@ Default is undef. Used to identify a catalog item for filtering by storeconfigs 
 
 #####`owner` (optional)
 
-Default is 'root'. Sets owner of local mountpoint.
+Default is 'root'. Sets owner of mountpoint directory. This is applied to the directory on every run, which means it is used both on the base mountpoint creation when unmounted, and also once mounted on the target NFS server and thus all servers accessing the same share.
+
 
 #####`group` (optional)
 
-Default is `root`. Sets goup ownership of mountpoint.
+Default is `root`. Sets group of mountpoint directory. This is applied to the directory on every run, which means it is used both on the base mountpoint creation when unmounted, and also once mounted on the target NFS server and thus all servers accessing the same share.
+
 
 #####`perm` (optional)
 
-Default is '0777'. Set mode of mountpoint.
+Default is '0755'. Sets mode of mountpoint directory. This has changed from previous versons which used '0777' (world writable). This is applied to the directory on every run, which means it is used both on the base mountpoint creation when unmounted, and also once mounted on the target NFS server and thus all servers accessing the same share.
+
 
 ##Requirements
 
