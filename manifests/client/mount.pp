@@ -10,7 +10,7 @@ define nfs::client::mount (
   $nfstag    = undef,
   $owner     = 'root',
   $group     = 'root',
-  $perm      = '0777',
+  $perm      = '0755',
 ) {
 
   include ::nfs::client
