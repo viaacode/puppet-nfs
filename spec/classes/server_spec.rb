@@ -37,6 +37,10 @@ describe 'nfs::server' do
     let(:facts) { {:operatingsystem => 'redhat', :concat_basedir => '/tmp', :operatingsystemrelease => 6.4 } }
     it { should contain_class('nfs::server::redhat') }
   end
+  context "operatingsysten => Amazon v3" do
+    let(:facts) { {:operatingsystem => 'Amazon', :concat_basedir => '/tmp', :operatingsystemrelease => '3.10.35-43.137.amzn1.x86_64' } }
+    it { should contain_class('nfs::server::redhat') }
+  end
   context "operatingsysten => gentoo" do
     let(:facts) { {:operatingsystem => 'gentoo', :concat_basedir => '/tmp',} }
     it { should contain_class('nfs::server::gentoo') }

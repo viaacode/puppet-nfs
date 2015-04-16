@@ -40,11 +40,33 @@ describe 'nfs::client::redhat' do
     end
   end
 
+  context "operatingsystemrelease => 3.10.35-43.137.amzn1.x86_64" do
+    let(:facts) { {:operatingsystemrelease => "3.10.35-43.137.amzn1.x86_64" } }
+    it do
+      should contain_class('nfs::client::redhat::install')
+      should contain_class('nfs::client::redhat::configure')
+      should contain_class('nfs::client::redhat::service')
+
+      should contain_service('nfslock').with(
+        'ensure' => 'running'
+      )
+      should contain_service('netfs').with(
+        'enable' => 'true'
+      )
+      should contain_package('nfs-utils')
+      should contain_class('nfs::client::redhat')
+      should contain_package('rpcbind')
+      should contain_service('rpcbind').with(
+        'ensure' => 'running'
+      )
+    end
+  end
+
   context ":nfs_v4 => true" do
     let(:params) {{ :nfs_v4 => true }}
     let(:facts) {{ :operatingsystemrelease => 6.4 }}
     it do
-      should contain_augeas('/etc/idmapd.conf') 
+      should contain_augeas('/etc/idmapd.conf')
     end
   end
 
