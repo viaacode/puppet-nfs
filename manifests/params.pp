@@ -9,7 +9,7 @@ class nfs::params (
   # Somehow the ::osfamliy fact doesnt exist on some oled systems
 
   case $::operatingsystem {
-    'centos', 'redhat', 'scientific', 'fedora', 'SLC', 'OracleLinux' : { $osfamily = 'redhat' }
+    'centos', 'redhat', 'scientific', 'fedora', 'SLC', 'OracleLinux', 'Amazon' : { $osfamily = 'redhat' }
     'debian', 'Ubuntu' : { $osfamily = 'debian' }
     'windows'          : { fail('fail!11') }
     'darwin'           : { $osfamily = 'darwin' }
