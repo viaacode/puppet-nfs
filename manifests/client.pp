@@ -41,9 +41,11 @@ class nfs::client (
   Class["::nfs::client::${::nfs::params::osfamily}::service"] ->
   Class['::nfs::client']
 
-  class{ "nfs::client::${::nfs::params::osfamily}":
-    nfs_v4              => $nfs_v4,
-    nfs_v4_idmap_domain => $nfs_v4_idmap_domain,
+  if !defined( Class["nfs::client::${::nfs::params::osfamily}"]) {
+    class{ "nfs::client::${::nfs::params::osfamily}":
+      nfs_v4              => $nfs_v4,
+      nfs_v4_idmap_domain => $nfs_v4_idmap_domain,
+    }
   }
 
 }
