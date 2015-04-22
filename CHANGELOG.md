@@ -1,13 +1,24 @@
+## 2015-04-22 - 1.4.0 (Feature/Bugfixe release)
+
+#### Features:
+
+- Issue #17 Add support for Amazon linux
+
+#### Bugfixes:
+
+- Fixed #16 revert default permissions from 0777 to 0755
+- Fixed #18 problems with a host being client & server
+
 ## 2015-03-20 - 1.3.1 (Feature/Bugfixe release)
 
 #### Features:
 
-- #11 Add function to easy handle large numer of clients (see README "A large number of clients")
+- Issue #11 Add function to easy handle large numer of clients (see README "A large number of clients")
 
 #### Bugfixes:
 
-- #13 RHEL 7: handle service enable correct
-- #12 RHEL 7: ensure client mount works correct with undef mounts
+- Fixed #13 RHEL 7: handle service enable correct
+- Fixed #12 RHEL 7: ensure client mount works correct with undef mounts
 
 ## 2015-03-05 - 1.3.0 (Feature release)
 
