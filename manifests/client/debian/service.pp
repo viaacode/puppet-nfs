@@ -11,6 +11,7 @@ class nfs::client::debian::service {
 
   if $nfs::client::debian::nfs_v4 {
     service { 'idmapd':
+      name      => 'nfs-common',
       ensure    => running,
       subscribe => Augeas['/etc/idmapd.conf', '/etc/default/nfs-common'],
     }
