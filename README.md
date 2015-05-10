@@ -401,6 +401,9 @@ Default is undef. Used to identify a catalog item for filtering by storeconfigs 
 
 Default is 'localhost(ro)'. Copied directly into /etc/exports as a string, for simplicity.
 
+#####`server` (optional)
+
+Default is `$::clientcert`. Used to specify a other ip/name for the client to connect to. Usefull in machines with multiple ip addresses or network interfaces
 #####Example
 
 ```puppet
