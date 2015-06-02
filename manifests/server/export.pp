@@ -1,6 +1,7 @@
 define nfs::server::export (
   $v3_export_name = $name,
-  $v4_export_name = regsubst($name, '.*/(.*)', '\1' ),
+  # Grab the final directory name in the given path and make it our default nfsv4 export name.
+  $v4_export_name = regsubst($name, '.*/([^/]+)/?$', '\1' ),
   $clients        = 'localhost(ro)',
   $bind           = 'rbind',
   # globals for this share
