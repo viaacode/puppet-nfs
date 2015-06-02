@@ -176,7 +176,7 @@ they were exported from on the server
 
 ```puppet
 node client {
-  class { 'nfs::server':
+  class { 'nfs::client':
     nfs_v4 = true,
     nfs_v4_export_root_clients =>
       '10.0.0.0/24(rw,fsid=root,insecure,no_subtree_check,async,no_root_squash)'
@@ -193,7 +193,7 @@ the 'mounted' option.
 node client2 {
   $server = 'server'
 
-  class { '::nfs::server':
+  class { '::nfs::client':
     nfs_v4 = true,
   }
   Nfs::Client::Mount::Nfs_v4::Root <<| server == $server |>> { 
@@ -246,7 +246,7 @@ Just to show you, how complex we can make things ;-)
   }
 
   node client {
-    class { 'nfs::server':
+    class { 'nfs::client':
       nfs_v4              => true,
       nfs_v4_idmap_domain => $::domain
       nfs_v4_mount_root   => '/srv',
@@ -401,6 +401,9 @@ Default is undef. Used to identify a catalog item for filtering by storeconfigs 
 
 Default is 'localhost(ro)'. Copied directly into /etc/exports as a string, for simplicity.
 
+#####`server` (optional)
+
+Default is `$::clientcert`. Used to specify a other ip/name for the client to connect to. Usefull in machines with multiple ip addresses or network interfaces
 #####Example
 
 ```puppet
