@@ -1,3 +1,17 @@
+## 2015-06-05 - 1.5.0 (Feature/Bugfixe release)
+
+#### Features:
+
+- Issue #22 Make the name/ip of the server a config option in `nfs::server::export`
+- Issue #24 More flexible nfsv4 export naming
+
+#### Bugfixes:
+
+- Fixed #20 fix client examples in README
+- Fixed #21 Debian: fix service name fpr nfs v4
+- Fixed #23 Default mount name in `client::mount` `should be undef, so it gets filled in the module
+- Fixed #25 Fix tests for travis ci
+
 ## 2015-04-28 - 1.4.1 (Bugfixe release)
 
 #### Bugfixes:
