@@ -160,7 +160,7 @@ and on individual nodes.
 ```puppet
   node server {
     class { 'nfs::server':
-      nfs_v4 = true,
+      nfs_v4 => true,
       nfs_v4_export_root_clients =>
         '10.0.0.0/24(rw,fsid=root,insecure,no_subtree_check,async,no_root_squash)'
     }
