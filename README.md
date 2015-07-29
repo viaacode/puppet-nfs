@@ -170,6 +170,19 @@ and on individual nodes.
     }
   }
 ```
+Set ownership and permissions on the folder being exported
+
+```puppet
+  node server {
+    nfs::server::export{ '/data_folder':
+      ensure  => 'mounted',
+      clients => '10.0.0.0/24(rw,insecure,no_subtree_check,async,no_root_squash) localhost(rw)',
+      owner => 'root',
+      group => 'root',
+      perms => '0755',
+    }
+  }
+```
 
 By default, mounts are mounted in the same folder on the clients as
 they were exported from on the server
