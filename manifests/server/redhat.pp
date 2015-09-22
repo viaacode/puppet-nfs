@@ -4,6 +4,11 @@ class nfs::server::redhat(
   $mountd_port         = undef,
   $mountd_threads      = 1
 ) {
+  if ($::operatingsystemmajrelease == defined) and ($::operatingsystemmajrelease =~ /^7/) {
+    $service_name = 'nfs-server'
+  } else {
+    $service_name = 'nfs'
+  }
 
   if !defined(Class['nfs::client::redhat']) {
     class{ 'nfs::client::redhat':
@@ -13,10 +18,15 @@ class nfs::server::redhat(
   }
 
   if ($mountd_port != undef){
-    fail('Setting mountd port currently not supported on RedHat')
+    shellvar { 'rpc-mount-options':
+      ensure   => present,
+      target   => '/etc/sysconfig/nfs',
+      variable => 'MOUNTD_PORT',
+      value    => $mountd_port,
+      notify   => Service[$service_name],
+    }
   }
 
   include nfs::server::redhat::install, nfs::server::redhat::service
-
 
 }
