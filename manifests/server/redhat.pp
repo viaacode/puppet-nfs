@@ -4,7 +4,7 @@ class nfs::server::redhat(
   $mountd_port         = undef,
   $mountd_threads      = 1
 ) {
-  if $::operatingsystemmajrelease =~ /^7/ {
+  if ($::operatingsystemmajrelease == defined) and ($::operatingsystemmajrelease =~ /^7/) {
     $service_name = 'nfs-server'
   } else {
     $service_name = 'nfs'
