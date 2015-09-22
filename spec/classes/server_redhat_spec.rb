@@ -23,12 +23,10 @@ describe 'nfs::server::redhat' do
       end
     end
 
-    context "setting mountd port" do
-      let(:params) {{ :mountd_port => 4711 }}
+    context "mountd params set" do
+      let(:params) {{ :mountd_port => '4711' }}
       it do
-        expect {
-          should contain_class('nfs::server::redhat')
-        }.to raise_error(Puppet::Error, /Setting mountd port currently not supported on RedHat/)
+        should contain_shellvar('rpc-mount-options') #.with( 'ensure' => 'present' )
       end
     end
   end
