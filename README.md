@@ -536,3 +536,5 @@ If you want to have the full potential of this module its recommend to have stor
 Echocat modules are open projects. So if you want to make this module even better, you can contribute to this module on [Github](https://github.com/echocat/puppet-nfs).
 
 This module is forked/based on Harald Skoglund <haraldsk@redpill-linpro.com> from https://github.com/haraldsk/puppet-module-nfs/
+
+Please read DEVELOP.md on how to contribute to this module.

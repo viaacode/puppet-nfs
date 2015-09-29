@@ -1,3 +1,16 @@
+## 2015-09-29 - 1.6.0 (Feature/Bugfixe release)
+
+#### Features:
+
+- Issue #30 Add ability to set owner,group,perms on server::export
+- Issue #35 Enable mountd_port parameter for Red Hat.
+
+#### Bugfixes:
+
+- Fixed #28 Fix puppet dependency to puppetlabs-concat
+- Fixed #32 #33 Fix service in EL7 that can not be enabled.
+- Fixed #34 Fixed owner, group and perms on NFSv4 mount.
+
 ## 2015-06-05 - 1.5.0 (Feature/Bugfixe release)
 
 #### Features:
