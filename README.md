@@ -347,6 +347,19 @@ Export root, where we bind mount shares, default /export
 Domain setting for idmapd, must be the same across server
 and clients. Default is to use $domain fact.
 
+#####`hiera_exports` (optional)
+
+If set, the hiera variable nfs::server::exports will be used to
+construct nfs::server::export resources
+
+```hiera
+nfs::server::hiera_exports: true
+nfs::server::exports:
+  /mnt/something:
+    ensure: mounted
+    clients: '*(fsid=0,ro,insecure,async,all_squash,no_subtree_check,mountpoint=/mnt/something)'
+```
+
 #####Examples
 
 ```puppet
