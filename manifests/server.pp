@@ -45,7 +45,7 @@ class nfs::server (
   $mountd_port                   = undef,
   $mountd_threads                = 1,
   #
-  $hiera_exports                = false
+  $exports                      = undef,
 ) inherits nfs::params {
 
   class { "nfs::server::${::nfs::params::osfamily}":
@@ -57,8 +57,7 @@ class nfs::server (
 
   include nfs::server::configure
 
-  if $hiera_exports {
-    $exports = hiera_hash('nfs::server::exports')
+  if $exports {
     create_resources(nfs::server::export, $exports)
   }
 
