@@ -333,6 +333,11 @@ Set up NFS server and exports. NFSv3 and NFSv4 supported.
 
 **Parameters within `nfs::server`:**
 
+#####`service_manage` (true)
+
+Should this class manage the services behind nfs? Set this to false
+if you are managing the service in another way (e.g. pacemaker).
+
 #####`nfs_v4` (optional)
 
 NFSv4 support. Will set up automatic bind mounts to export root.
