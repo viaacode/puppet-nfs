@@ -1,7 +1,4 @@
 class nfs::client::ubuntu::service {
-  Service {
-    require => Class['nfs::client::ubuntu::configure']
-  }
 
   service { 'rpcbind':
     ensure    => running,

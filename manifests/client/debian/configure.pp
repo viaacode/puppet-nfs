@@ -1,7 +1,4 @@
 class nfs::client::debian::configure {
-  Augeas{
-    require => Class['nfs::client::debian::install']
-  }
 
   if $nfs::client::debian::nfs_v4 {
       augeas {
