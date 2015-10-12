@@ -3,10 +3,6 @@
 
 class nfs::client::redhat::service {
 
-  Service {
-    require => Class['nfs::client::redhat::configure']
-  }
-
 # lint:ignore:selector_inside_resource  would not add much to readability
 
   service {'nfslock':
