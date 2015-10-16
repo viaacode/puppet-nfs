@@ -1,7 +1,7 @@
 {
     "operatingsystem_support": [
     {
-      "operatingsystem": "RedHat"
+      "operatingsystem": "RedHat",
       "operatingsystemrelease": [
         "5",
         "6",
@@ -9,7 +9,7 @@
       ]
     },
     {
-      "operatingsystem": "CentOS"
+      "operatingsystem": "CentOS",
       "operatingsystemrelease": [
         "5",
         "6",
@@ -17,7 +17,7 @@
       ]
     },
     {
-      "operatingsystem": "Scientific"
+      "operatingsystem": "Scientific",
       "operatingsystemrelease": [
         "5",
         "6",
@@ -25,7 +25,7 @@
       ]
     },
     {
-      "operatingsystem": "Debian"
+      "operatingsystem": "Debian",
       "operatingsystemrelease": [
         "6",
         "7",
@@ -33,7 +33,7 @@
       ]
     },
     {
-      "operatingsystem": "Ubuntu"
+      "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
         "10.04",
         "12.04",
@@ -68,7 +68,7 @@
   "project_page": "https://github.com/echocat/puppet-nfs",
   "issues_url": "https://github.com/echocat/puppet-nfs/issues",
   "dependencies": [
-    {"name":"puppetlabs/stdlib","version_requirement":">= 3.2.0 < 5.0.0"},
+    {"name":"puppetlabs/stdlib","version_requirement":">= 4.6.0 < 5.0.0"},
     {"name":"puppetlabs/concat","version_requirement":">= 1.1.1 <2.0.0"},
     {"name":"herculesteam/augeasproviders_shellvar","version_requirement":">= 2.1.0"}
   ]
