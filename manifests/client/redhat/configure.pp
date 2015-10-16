@@ -3,7 +3,6 @@
 
 class nfs::client::redhat::configure {
 
-
   if $nfs::client::redhat::nfs_v4 {
     augeas {
       '/etc/idmapd.conf':
