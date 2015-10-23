@@ -1,3 +1,9 @@
+## 2015-10-23 - 1.7.1 (Bugfix release)
+
+#### Bugfixes:
+
+- (cd47771) #49 Supporting kernel 4.x in recent Amazon Linux releases 
+
 ## 2015-10-16 - 1.7.0 (Feature/Bugfixe release)
 
 #### Features:
