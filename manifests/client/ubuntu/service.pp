@@ -9,9 +9,13 @@ class nfs::client::ubuntu::service {
   if $nfs::client::ubuntu::nfs_v4 {
     service { 'idmapd':
       ensure    => running,
+      enable    => true,
       subscribe => Augeas['/etc/idmapd.conf', '/etc/default/nfs-common'],
     }
   } else {
-    service { 'idmapd': ensure => stopped, }
+    service { 'idmapd':
+      ensure => stopped,
+      enable => false,
+    }
   }
 }
