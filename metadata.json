@@ -60,7 +60,7 @@
     }
   ],
   "name": "echocat-nfs",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "source": "git clone https://github.com/echocat/puppet-nfs.git",
   "author": "echocat",
   "license": "Apache-2.0",
