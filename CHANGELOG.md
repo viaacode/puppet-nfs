@@ -1,3 +1,10 @@
+## 2016-01-08 - 1.7.2 (Bugfix release)
+
+#### Bugfixes:
+
+- (174a9b4) #53 Debian do not stop (nonexisting) service, when using nfs-v3
+- (21c2a1d) #54 #55 Debian/Ubuntu enable the idmapd service on boot, when using nfs-v3
+
 ## 2015-10-23 - 1.7.1 (Bugfix release)
 
 #### Bugfixes:
