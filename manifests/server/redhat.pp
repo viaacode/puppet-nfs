@@ -22,7 +22,7 @@ class nfs::server::redhat(
     file_line { 'rpc-mount-options':
       ensure => present,
       path   => '/etc/sysconfig/nfs',
-      line   => "MOUNTD_PORT=${mountd_port} --num-threads ${mountd_threads}",
+      line   => "MOUNTD_PORT=${mountd_port}",
       match  => '^#?MOUNTD_PORT';
     }
 
