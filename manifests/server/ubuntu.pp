@@ -18,7 +18,7 @@ class nfs::server::ubuntu(
     file_line { 'rpc-mount-options':
       ensure            => present,
       path              => '/etc/default/nfs-kernel-server',
-      line              => "--manage-gids --port ${mountd_port} --num-threads ${mountd_threads}",
+      line              => "RPCMOUNTDOPTS=--manage-gids --port ${mountd_port} --num-threads ${mountd_threads}",
       match             => '^#?RPCMOUNTDOPTS';
     }
 
