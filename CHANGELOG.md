@@ -1,3 +1,11 @@
+## 2016-01-18 - 1.8.0 (Feature release)
+
+!!! raise veriosn of requirements for stdlib to >4.8.0 !!!
+
+#### Features:
+
+- (ba021e9) #62 Remove herculesteam/augeasproviders_shellvar dependency
+
 ## 2016-01-08 - 1.7.2 (Bugfix release)
 
 #### Bugfixes:
