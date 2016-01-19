@@ -1,6 +1,6 @@
 ## 2016-01-18 - 1.8.0 (Feature release)
 
-!!! raise veriosn of requirements for stdlib to >4.8.0 !!!
+*Warning:* Requires [puppetlabs-stdlib](https://github.com/puppetlabs/puppetlabs-stdlib) > =4.8.0 !
 
 #### Features:
 
