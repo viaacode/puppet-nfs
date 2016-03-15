@@ -1,8 +1,8 @@
 # Nasty ass hax to allow several levels of directories
 define nfs::mkdir (
-  #$owner = 'root',
-  #$group = 'root',
-  #$perm  = '0755'
+  $owner = 'root',
+  $group = 'root',
+  $perm  = '0755'
 ) {
   #exec { "mkdir_recurse_${name}":
   #  path    => ['/bin', '/usr/bin'],
